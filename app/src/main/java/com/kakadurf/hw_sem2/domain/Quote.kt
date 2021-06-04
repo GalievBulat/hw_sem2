@@ -2,7 +2,7 @@ package com.kakadurf.hw_sem2.domain
 
 import com.google.gson.annotations.SerializedName
 
-data class Quote (
+data class Quote(
     @SerializedName("_id")
     var id: String,
     @SerializedName("dialog")
@@ -11,4 +11,4 @@ data class Quote (
     var movieId: String,
     @SerializedName("character")
     var characterId: String
-): Data
+) : Data

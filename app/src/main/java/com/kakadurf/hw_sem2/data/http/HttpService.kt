@@ -9,8 +9,10 @@ import retrofit2.http.Query
 interface HttpService {
     @GET("character")
     suspend fun getCharacters(@Query("limit") limit: Int = 100): HttpResponse<Character>
+
     @GET("character/{id}")
-    suspend fun getCharacter(@Path("id") id : String): HttpResponse<Character>
+    suspend fun getCharacter(@Path("id") id: String): HttpResponse<Character>
+
     @GET("quote")
     suspend fun getQuotes(@Query("limit") limit: Int = 100): HttpResponse<Quote>
     @GET("quote/{id}")

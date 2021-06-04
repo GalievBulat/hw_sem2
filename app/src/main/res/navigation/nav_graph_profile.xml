@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_profile"
+    app:startDestination="@id/profileFragment">
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.kakadurf.hw_sem2.presentation.view.fragment.ProfileFragment"
+        android:label="ProfileFragment">
+        <action
+            android:id="@+id/action_profileFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_weatherFragment"
+            app:destination="@id/weatherFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.kakadurf.hw_sem2.presentation.view.fragment.InfoFragment"
+        android:label="InfoFragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.kakadurf.hw_sem2.presentation.view.fragment.SettingsFragment"
+        android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="com.kakadurf.hw_sem2.presentation.view.fragment.NewsFragment"
+        android:label="NewsFragment" />
+    <fragment
+        android:id="@+id/weatherFragment"
+        android:name="com.kakadurf.hw_sem2.presentation.view.fragment.WeatherFragment"
+        android:label="WeatherFragment" />
+</navigation>

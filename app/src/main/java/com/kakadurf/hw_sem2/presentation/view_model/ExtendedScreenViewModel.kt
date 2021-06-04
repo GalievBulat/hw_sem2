@@ -9,31 +9,30 @@ import com.kakadurf.hw_sem2.domain.Quote
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class ExtendedScreenViewModel: ViewModel() {
+class ExtendedScreenViewModel : ViewModel() {
     val characterInfo: MutableLiveData<Character> = MutableLiveData()
     val characterQuotes: MutableLiveData<List<Quote>> = MutableLiveData()
-    fun getCharacter(id: String){
+    fun getCharacter(id: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val character =  InformationProviderFacade.getSpecificCharacter(
+            val character = InformationProviderFacade.getSpecificCharacter(
                 id
             )
             launch(Dispatchers.Main) {
                 characterInfo.value = character
             }
-                    //viewState.inflateCharacterData(it)
-
+            // viewState.inflateCharacterData(it)
         }
     }
-    fun getQuotes(characterId: String){
+
+    fun getQuotes(characterId: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val quotes =  InformationProviderFacade.getSpecificQuotes(
+            val quotes = InformationProviderFacade.getSpecificQuotes(
                 characterId
             )
             launch(Dispatchers.Main) {
                 characterQuotes.value = quotes
-                //viewState.inflateQuotesData(it)
+                // viewState.inflateQuotesData(it)
             }
-
         }
     }
 }

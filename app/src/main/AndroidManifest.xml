@@ -14,11 +14,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Hw_sem2"
-        android:allowBackup="true">
-        <activity android:name=".presentation.view.ActivityMain">
+        android:allowBackup="true"
+        android:name=".presentation.ApplicationProxy">
+
+        <activity android:name=".presentation.view.AuthActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".presentation.view.ActivityMain">
+            <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

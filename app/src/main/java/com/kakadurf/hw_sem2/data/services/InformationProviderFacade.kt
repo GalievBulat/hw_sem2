@@ -13,13 +13,14 @@ import java.io.IOException
 import java.util.concurrent.TimeUnit
 
 const val BASE_URL = "https://the-one-api.dev/v2/"
-object InformationProviderFacade{
-    private val apiKeyInterceptor = Interceptor{
+object InformationProviderFacade {
+    private val apiKeyInterceptor = Interceptor {
         it.proceed(
-            it.request().newBuilder().addHeader("Authorization", " Bearer $API_KEY").build())
+            it.request().newBuilder().addHeader("Authorization", "Bearer $API_KEY").build()
+        )
     }
-    private val int = Interceptor{
-        Log.d("hi",  it.request().body().toString())
+    private val int = Interceptor {
+        Log.d("hi", it.request().body().toString())
         it.proceed(it.request())
     }
     private val client: OkHttpClient = OkHttpClient.Builder()
@@ -33,28 +34,32 @@ object InformationProviderFacade{
         .addConverterFactory(GsonConverterFactory.create())
         .build()
     private val service: HttpService = retrofit.create(
-        HttpService::class.java)
-    suspend fun getSpecificCharacter(id: String): Character?{
+        HttpService::class.java
+    )
+
+    suspend fun getSpecificCharacter(id: String): Character? {
         return try {
             service.getCharacter(id).chars.first()
-        } catch (e: IOException){
+        } catch (e: IOException) {
             Log.d("hi", "error: " + e.localizedMessage)
             null
         }
     }
-    suspend fun getCharacters(): List<Character>{
+
+    suspend fun getCharacters(): List<Character> {
         return try {
             service.getCharacters(1000).chars
-        } catch (e: IOException){
+        } catch (e: IOException) {
             e.printStackTrace()
             Log.d("hi", "error")
             listOf()
         }
     }
-    suspend fun getSpecificQuotes(characterId: String): List<Quote>{
+
+    suspend fun getSpecificQuotes(characterId: String): List<Quote> {
         return try {
-                service.getCharacterQuote(characterId).chars
-        } catch (e: IOException){
+            service.getCharacterQuote(characterId).chars
+        } catch (e: IOException) {
             Log.d("hi", "error")
             listOf()
         }

@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 
 class CharacterViewModel : ViewModel() {
     val list: MutableLiveData<List<CharacterDTO>> = MutableLiveData()
-    fun findCharacters(){
+    fun findCharacters() {
         viewModelScope.launch(Dispatchers.IO) {
             val str =
                 InformationProviderFacade.getCharacters()
@@ -32,9 +32,7 @@ class CharacterViewModel : ViewModel() {
             launch(Dispatchers.Main) {
                 list.value = dtoSet
             }
-            //viewState.onDataFetch(dtoSet)
+            // viewState.onDataFetch(dtoSet)
         }
     }
-
-
 }

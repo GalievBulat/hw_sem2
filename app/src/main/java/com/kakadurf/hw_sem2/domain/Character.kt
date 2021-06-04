@@ -2,7 +2,7 @@ package com.kakadurf.hw_sem2.domain
 
 import com.google.gson.annotations.SerializedName
 
-data class Character  (
+data class Character(
     @SerializedName("name")
     var name: String,
     @SerializedName("_id")
@@ -25,4 +25,4 @@ data class Character  (
     var realm: String?,
     @SerializedName("wikiUrl")
     var wikiUrl: String?
-): Data
+) : Data

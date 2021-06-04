@@ -1,40 +1,27 @@
 package com.kakadurf.hw_sem2.presentation.view
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.kakadurf.hw_sem2.R
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlin.coroutines.CoroutineContext
+import com.kakadurf.hw_sem2.presentation.models.UserInfoDto
+import kotlinx.android.synthetic.main.activity_main.navigationView
 
-class ActivityMain : AppCompatActivity(), CoroutineScope {
-    override val coroutineContext: CoroutineContext = Dispatchers.IO
-    private val fragmentManager : FragmentManager = supportFragmentManager
-
-    private val onChoice: (String)->Unit = {
-        Log.d("hi", "onChoose")
-        swapFragment(
-            ExtendedCharacterInfoFragment.createIndexed(
-                it
-            )
-        )
-    }
+class ActivityMain : AppCompatActivity() {
+    private var userInfo: UserInfoDto? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.layout_activity_main)
-            swapFragment(
-                ListFragment()
-            )
+        setContentView(R.layout.activity_main)
+        userInfo = savedInstanceState?.getParcelable<UserInfoDto>("usetInfo")
     }
 
-    private fun swapFragment(fragment: Fragment){
-        fragmentManager.beginTransaction().replace(R.id.fl_main,fragment)
-            .addToBackStack("app_stack")
-            .setReorderingAllowed(true)
-            .commit()
+    override fun onStart() {
+        super.onStart()
+        val navController = findNavController(R.id.fragmentContainerView)
+        NavigationUI.setupWithNavController(
+            navigationView,
+            navController
+        )
     }
-
 }
