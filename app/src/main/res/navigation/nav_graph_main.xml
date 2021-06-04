@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_auth"
+    app:startDestination="@id/listFragment">
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.kakadurf.hw_sem2.presentation.view.fragment.ListFragment"
+        android:label="ListFragment">
+        <action
+            android:id="@+id/action_listFragment_to_extendedCharacterInfoFragment"
+            app:destination="@id/extendedCharacterInfoFragment">
+            <argument
+                android:name="characterId"
+                app:argType="string"
+                app:nullable="false" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/extendedCharacterInfoFragment"
+        android:name="com.kakadurf.hw_sem2.presentation.view.fragment.ExtendedCharacterInfoFragment"
+        android:label="ExtendedCharacterInfoFragment" />
+    <include app:graph="@navigation/nav_graph_profile" />
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.kakadurf.hw_sem2.presentation.view.fragment.FavoritesFragment"
+        android:label="FavoritesFragment" />
+</navigation>
